@@ -8,14 +8,14 @@
 
     part1 = (| values. integerValues |
         values: input splitOn: ' '.
-        integerValues: list copyRemoveAll.
-        values do: [| :node | integerValues append: node value toInteger ].
+        integerValues: values copy.
+        values do: [| :value. :i | integerValues at: i Put: value toInteger ].
 
         0 to: integerValues size prec Do: [| :i. a |
             a: integerValues at: i.
             i succ to: integerValues size Do: [| :j. b |
-                'i: ' print. i _StringPrint. ' j: ' print. j _StringPrint. '' printLine.
-                b: integerValues at: j.
+            "'i: ' print. i _StringPrint. ' j: ' print. j _StringPrint. '' printLine."
+            b: integerValues at: j.
                 ((a + b) = 2020) ifTrue: [
                     ^ a * b.
                 ].
