@@ -14,8 +14,7 @@
         0 to: integerValues size prec Do: [| :i. a |
             a: integerValues at: i.
             i succ to: integerValues size Do: [| :j. b |
-            "'i: ' print. i _StringPrint. ' j: ' print. j _StringPrint. '' printLine."
-            b: integerValues at: j.
+                b: integerValues at: j.
                 ((a + b) = 2020) ifTrue: [
                     ^ a * b.
                 ].
@@ -23,10 +22,27 @@
         ].
     ).
 
-    part2 = 'TODO part 2'.
+    part2 = (| values. integerValues |
+        values: input splitOn: ' '.
+        integerValues: values copy.
+        values do: [| :value. :i | integerValues at: i Put: value toInteger ].
+
+        0 to: integerValues size prec Do: [| :i. a |
+            a: integerValues at: i.
+            i succ to: integerValues size Do: [| :j. b |
+                b: integerValues at: j.
+                j succ to: integerValues size Do: [| :k. c |
+                    c: integerValues at: k.
+                    ((a + b + c) = 2020) ifTrue: [
+                        ^ a * b * c.
+                    ].
+                ].
+            ].
+        ].
+    ).
 
     main = (
         'Part 1: ' print. part1 _StringPrint. '' printLine.
-        part2 printLine.
+        'Part 2: ' print. part2 _StringPrint. '' printLine.
     ).
 |) main.
