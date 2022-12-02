@@ -31,21 +31,21 @@
                 you = 'Y' ifTrue: [ ^ winState loss ].
                 you = 'Z' ifTrue: [ ^ winState draw ].
             ].
-            _Error: 'Bruh'.
+            _Error: 'Unknown state'.
         ).
 
         bonusFor: state = (
             state == winState win ifTrue: [ ^ 6 ].
             state == winState draw ifTrue: [ ^ 3 ].
             state == winState loss ifTrue: [ ^ 0 ].
-            _Error: 'Unknown state ', state.
+            _Error: 'Unknown state'.
         ).
 
         scoreFor: you = (
             you = 'X' ifTrue: [ ^ 1 ].
             you = 'Y' ifTrue: [ ^ 2 ].
             you = 'Z' ifTrue: [ ^ 3 ].
-            _Error: 'oh nah m8'.
+            _Error: 'Unknown state'.
         ).
 
         total
@@ -85,14 +85,14 @@
                 him = 'B' ifTrue: [ ^ 1 ].
                 him = 'C' ifTrue: [ ^ 2 ].
             ].
-            _Error: 'Bruh'.
+            _Error: 'Unknown state'.
         ).
 
         scoreFor: you = (
             you = 'Z' ifTrue: [ ^ 6 ].
             you = 'Y' ifTrue: [ ^ 3 ].
             you = 'X' ifTrue: [ ^ 0 ].
-            _Error: 'oh nah m8'.
+            _Error: 'Unknown state'.
         ).
 
         total.
